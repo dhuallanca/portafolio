@@ -9,7 +9,6 @@ import { InfoPaginaService } from 'app/services/info-pagina.service';
 export class PortafolioComponent implements OnInit {
 
   constructor(private paginaService: InfoPaginaService) {
-    console.log(this.paginaService);
   }
 
   ngOnInit() {

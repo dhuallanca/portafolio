@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InfoPaginaService } from 'app/services/info-pagina.service';
+import { EquipoInterface } from '../../interfaces/equipo.interface';
 
 @Component({
   selector: 'app-about',
@@ -7,10 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutComponent implements OnInit {
 
-  equipo: any[] = [];
-  constructor() { }
+  equipo: EquipoInterface[] = [];
+  constructor(private paginaService: InfoPaginaService) { }
 
   ngOnInit() {
+    this.paginaService.cargarEquipo().subscribe((response) => {
+      this.equipo = response;
+    });
   }
 
 }
