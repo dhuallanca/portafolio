@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { InfoPaginaService } from 'app/services/info-pagina.service';
+import { ProductoService } from '../../services/producto.service';
+import { ProductInterface } from '../../interfaces/product.interface';
 
 @Component({
   selector: 'app-portafolio',
@@ -8,10 +9,14 @@ import { InfoPaginaService } from 'app/services/info-pagina.service';
 })
 export class PortafolioComponent implements OnInit {
 
-  constructor(private paginaService: InfoPaginaService) {
+  products: ProductInterface[];
+
+  constructor(private productService: ProductoService) {
   }
 
   ngOnInit() {
+    this.productService.cargarProductos()
+      .subscribe(response => this.products = response);
   }
 
 }
